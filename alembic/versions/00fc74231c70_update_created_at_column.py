@@ -20,9 +20,27 @@ depends_on: Union[str, Sequence[str], None] = None
 
 def upgrade() -> None:
     """Upgrade schema."""
+    op.alter_column(
+        "users",
+        "created_at",
+        existing_type=sa.DateTime(),  # or sa.TIMESTAMP(timezone=True) if already set
+        type_=sa.TIMESTAMP(timezone=True),
+        nullable=False,
+        server_default=sa.text("NOW()")
+    )
+
+
     pass
 
 
 def downgrade() -> None:
     """Downgrade schema."""
+    op.alter_column(
+        "users",
+        "created_at",
+        existing_type=sa.TIMESTAMP(timezone=True),
+        type_=sa.DateTime(),
+        nullable=True,
+        server_default=None)
+
     pass

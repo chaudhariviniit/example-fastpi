@@ -22,15 +22,6 @@ def upgrade() -> None:
     """Upgrade schema."""
     op.add_column("posts",sa.Column("published",sa.Boolean(),nullable=False
                                     ,server_default=sa.text("True")))
-    op.add_column(
-    "posts",
-    sa.Column(
-        "created_at",
-        sa.TIMESTAMP(timezone=True),
-        nullable=False,
-        server_default=sa.text("now()")
-    )
-)
 pass
 
 def downgrade() -> None:

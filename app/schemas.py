@@ -12,7 +12,7 @@ class PostCreate(PostBase):
 class UserResponse(BaseModel):
     id : int 
     email : EmailStr
-    create_at : datetime
+    created_at : datetime
     class Config:
        from_attributes = True
 

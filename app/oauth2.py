@@ -8,9 +8,9 @@ from .config import settings
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl = "login")
 
-SECRET_KEY = {settings.secret_key}
-ACCESS_TOKEN_EXPIRE_MINUTE  = {settings.access_token_expire_minutes}
-ALGORITHM = {settings.algorithm}
+SECRET_KEY = settings.secret_key
+ACCESS_TOKEN_EXPIRE_MINUTE  = settings.access_token_expire_minutes
+ALGORITHM = settings.algorithm
 
 def create_access_token(data : dict):
     to_encode = data.copy()
